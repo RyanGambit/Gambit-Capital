@@ -106,14 +106,10 @@
   .hero-eyebrow .dot { width: 6px; height: 6px; background: var(--working); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
   .hero-eyebrow .sep { color: rgba(255,255,255,0.25); }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  h1.hero-title { font-family: var(--font); font-weight: 600; font-size: clamp(64px, 9.5vw, 144px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 56px; color: var(--white); }
+  h1.hero-title { font-family: var(--font); font-weight: 500; font-size: clamp(64px, 9.5vw, 144px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 56px; color: var(--white); }
   h1.hero-title .line { display: block; }
-  h1.hero-title .line-3 { color: var(--working); }
   .hero-subline { max-width: 720px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: rgba(255,255,255,0.75); font-weight: 400; }
   .hero-subline strong { color: var(--white); font-weight: 500; }
-  .hero-meta { margin-top: 100px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap; }
-  .hero-meta .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-  .hero-meta .stamp strong { color: var(--white); font-weight: 500; }
 
   /* THESIS */
   #thesis { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
@@ -151,10 +147,10 @@
   #how .section-head .label { color: rgba(255,255,255,0.55); }
   #how .section-head .label .num { color: var(--white); }
   #how .section-head h2 { color: var(--white); }
-  #how .section-head h2 .accent { color: var(--working); }
+  #how .section-head h2 .accent { color: rgba(255,255,255,0.5); }
   .how-layout { display: grid; grid-template-columns: 200px 1fr; gap: 56px; align-items: start; }
   .how-graphic { position: sticky; top: 100px; align-self: start; }
-  .how-vertical-rail { width: 100%; height: auto; max-height: 600px; }
+  .how-vertical-rail { width: 100%; height: auto; max-height: 600px; overflow: visible; }
   .moments { display: flex; flex-direction: column; }
   .moment { padding: 48px 0; border-bottom: 1px solid rgba(255,255,255,0.12); display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; }
   .moment:first-child { border-top: 1px solid rgba(255,255,255,0.25); padding-top: 0; }
@@ -182,14 +178,22 @@
   .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); z-index: 2; transition: filter 0.4s ease; }
   .team-card:hover .portrait img { filter: grayscale(0) contrast(1); }
   .portrait .monogram { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; font-size: 48px; color: var(--ink); letter-spacing: 0.04em; z-index: 2; }
-  .portrait.pending::before { background: repeating-linear-gradient(45deg, var(--sand-deep) 0, var(--sand-deep) 6px, var(--sand) 6px, var(--sand) 12px); }
-  .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+  .portrait.pending::before { background: radial-gradient(circle at 50% 35%, var(--sand) 0%, var(--sand-deep) 70%); }
+  .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; color: var(--secondary); font-weight: 500; text-transform: uppercase; }
+
+  /* AI WORKER CARDS */
   .portrait.ai-worker { background: var(--ink); border: 1px solid var(--ink); }
-  .portrait.ai-worker::before { background: linear-gradient(135deg, var(--ink) 0%, var(--surface) 100%); }
-  .portrait.ai-worker .monogram { color: var(--white); }
-  .portrait.ai-worker::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 14px 14px; pointer-events: none; z-index: 1; }
+  .portrait.ai-worker::before { background: linear-gradient(155deg, var(--ink) 0%, var(--surface) 100%); }
+  .portrait.ai-worker .monogram { font-size: 72px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+  .portrait.ai-worker::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  .portrait.ai-bogan::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 9px); }
+  .portrait.ai-margin::after { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 10px 10px; }
+  .portrait.ai-ledger::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 22px); }
+  .portrait.ai-pulse::after { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px); }
+  .portrait.ai-quartermaster::after { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px); }
   .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
   .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
+  .ai-id { position: absolute; bottom: 12px; right: 14px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); }
   .team-card .name { font-family: var(--font); font-weight: 500; font-size: 16px; margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
   .team-card.pending-card .name { color: var(--muted); }
   .team-card .title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
@@ -199,6 +203,14 @@
 
   /* INSIGHTS */
   #insights { padding: 140px 0; background: var(--sand); border-top: 1px solid var(--border); }
+  .insights-mast { margin-bottom: 64px; }
+  .insights-mast-rule { height: 1px; background: var(--ink); }
+  .insights-mast-meta { padding: 14px 0 28px; display: flex; gap: 20px; align-items: baseline; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); }
+  .insights-mast-meta .mast-num { color: var(--ink); font-weight: 600; }
+  .insights-mast-meta .mast-name { color: var(--ink); }
+  .insights-mast-meta .mast-date { margin-left: auto; color: var(--muted); }
+  .insights-mast h2 { font-family: var(--font); font-weight: 500; font-size: clamp(36px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.025em; color: var(--ink); max-width: 1100px; }
+  .insights-mast h2 .accent { color: var(--secondary); font-weight: 400; }
   .insights-magazine { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
   .insight-featured { background: var(--white); padding: 48px 40px; border: 1px solid var(--border); border-top: 3px solid var(--clay); border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .insight-featured:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.06); }
@@ -224,10 +236,9 @@
   #contact::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at top, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at top, black 10%, transparent 60%); pointer-events: none; }
   .contact-inner { position: relative; z-index: 2; }
   .contact-head { margin-bottom: 56px; }
-  .contact-head .label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); margin-bottom: 32px; display: block; }
+  .contact-head .label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 32px; display: block; }
   .contact-head .label .num { color: var(--white); font-weight: 600; }
   .contact-head h2 { font-family: var(--font); font-weight: 500; font-size: clamp(48px, 7vw, 96px); line-height: 0.98; letter-spacing: -0.035em; color: var(--white); }
-  .contact-head h2 .accent { color: var(--working); }
   .contact-email { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font); font-size: clamp(24px, 3vw, 36px); color: var(--white); text-decoration: none; padding: 16px 28px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; font-weight: 500; transition: background 0.2s ease, border-color 0.2s ease; margin-bottom: 100px; letter-spacing: -0.015em; }
   .contact-email:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
   .contact-email .arrow { font-family: var(--mono); font-size: 18px; transition: transform 0.2s ease; }
@@ -255,7 +266,7 @@
     .nav-inner { padding: 0 28px; }
     .nav-links { gap: 0; }
     .nav-links a { padding: 6px 10px; font-size: 13px; }
-    .section-head, .thesis-body { grid-template-columns: 1fr; gap: 40px; }
+    .section-head { grid-template-columns: 1fr; gap: 40px; }
     .beat { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
     .moment { grid-template-columns: 1fr; gap: 16px; }
     .team-grid { grid-template-columns: repeat(3, 1fr); }
@@ -263,8 +274,7 @@
     .insights-magazine { grid-template-columns: 1fr; gap: 32px; }
     .cohort-desc { text-align: left; }
     .mandate-single { padding: 40px 36px 32px; }
-    .how-layout { grid-template-columns: 1fr; gap: 32px; }
-    .how-graphic { display: none; }
+    .how-layout { grid-template-columns: 100px 1fr; gap: 28px; }
   }
 
   @media (max-width: 720px) {
@@ -280,6 +290,8 @@
     .insight-featured { padding: 32px 24px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .mandate-single { padding: 32px 24px 28px; border-radius: 12px; }
+    .how-layout { grid-template-columns: 1fr; gap: 32px; }
+    .how-graphic { display: none; }
   }
 </style>
 </head>
@@ -322,11 +334,11 @@
     <h1 class="hero-title">
       <span class="line">We build.</span>
       <span class="line">We deploy.</span>
-      <span class="line line-3">We back.</span>
+      <span class="line">We back.</span>
     </h1>
 
     <p class="hero-subline">
-      From the pioneers at Gambit. We've watched AI compound enterprise value in physical industries. <strong>Now we're putting that capital to work</strong>, with forward-deployed teams and AI workers in every deal.
+      AI compounds enterprise value in physical industries. <strong>Now we're putting that capital to work,</strong> with forward-deployed teams and AI workers in every deal.
     </p>
   </div>
 </section>
@@ -411,7 +423,7 @@
 
     <div class="how-layout">
       <div class="how-graphic">
-        <svg class="how-vertical-rail" viewBox="0 0 80 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+        <svg class="how-vertical-rail" viewBox="0 0 80 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
           <line x1="40" y1="20" x2="40" y2="580" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
           <line x1="40" y1="20" x2="40" y2="200" stroke="var(--clay)" stroke-width="1" />
           <circle cx="40" cy="40" r="6" fill="var(--clay)" />
@@ -537,9 +549,10 @@
       <div class="team-grid">
 
         <div class="team-card">
-          <div class="portrait ai-worker">
+          <div class="portrait ai-worker ai-bogan">
             <span class="ai-tag">In production</span>
             <span class="monogram">B</span>
+            <span class="ai-id">01</span>
           </div>
           <div class="name">Bogan</div>
           <div class="title">Origination &amp; Screening</div>
@@ -547,9 +560,10 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait ai-worker">
+          <div class="portrait ai-worker ai-margin">
             <span class="ai-tag">In production</span>
             <span class="monogram">M</span>
+            <span class="ai-id">02</span>
           </div>
           <div class="name">Margin</div>
           <div class="title">Diligence Coordinator</div>
@@ -557,9 +571,10 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait ai-worker">
+          <div class="portrait ai-worker ai-ledger">
             <span class="ai-tag">In production</span>
             <span class="monogram">L</span>
+            <span class="ai-id">03</span>
           </div>
           <div class="name">Ledger</div>
           <div class="title">IC Memo &amp; Thesis</div>
@@ -567,9 +582,10 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait ai-worker">
+          <div class="portrait ai-worker ai-pulse">
             <span class="ai-tag">In production</span>
             <span class="monogram">P</span>
+            <span class="ai-id">04</span>
           </div>
           <div class="name">Pulse</div>
           <div class="title">Portfolio &amp; KPI Monitoring</div>
@@ -577,9 +593,10 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait ai-worker">
+          <div class="portrait ai-worker ai-quartermaster">
             <span class="ai-tag">In production</span>
             <span class="monogram">Q</span>
+            <span class="ai-id">05</span>
           </div>
           <div class="name">Quartermaster</div>
           <div class="title">LP Reporting &amp; Capital Stack</div>
@@ -594,10 +611,15 @@
 <!-- INSIGHTS -->
 <section id="insights">
   <div class="container">
-    <div class="section-head">
-      <div class="label"><span class="num">05</span> · News &amp; Insights</div>
+    <header class="insights-mast">
+      <div class="insights-mast-rule"></div>
+      <div class="insights-mast-meta">
+        <span class="mast-num">No. 05</span>
+        <span class="mast-name">News &amp; Insights</span>
+        <span class="mast-date">Issue · May 2026</span>
+      </div>
       <h2>Long-form thinking on <span class="accent">AI, capital, and the operators</span> rebuilding mid-market businesses.</h2>
-    </div>
+    </header>
 
     <div class="insights-magazine">
       <article class="insight-featured">
@@ -647,7 +669,7 @@
   <div class="container contact-inner">
     <div class="contact-head">
       <span class="label"><span class="num">06</span> · Contact</span>
-      <h2>We'd <span class="accent">like</span> to hear from you.</h2>
+      <h2>We'd like to hear from you.</h2>
     </div>
 
     <a href="mailto:capital@gambitco.io" class="contact-email">capital@gambitco.io <span class="arrow">→</span></a>
