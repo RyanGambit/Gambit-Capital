@@ -176,6 +176,7 @@
   .portrait { width: 100%; aspect-ratio: 1 / 1.2; background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; position: relative; overflow: hidden; border-radius: 8px; }
   .portrait::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--white) 0%, var(--sand) 100%); }
   .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+  .portrait img.duotone { filter: url(#duotone-clay); }
   .portrait .monogram { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; font-size: 48px; color: var(--ink); letter-spacing: 0.04em; z-index: 2; }
   .portrait.pending::before { background: radial-gradient(circle at 50% 35%, var(--sand) 0%, var(--sand-deep) 70%); }
   .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; color: var(--secondary); font-weight: 500; text-transform: uppercase; }
@@ -295,6 +296,20 @@
 </style>
 </head>
 <body>
+
+<!-- SVG filter defs (duotone for monochrome photos) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="duotone-clay" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.04 0.78"/>
+        <feFuncG type="table" tableValues="0.04 0.62"/>
+        <feFuncB type="table" tableValues="0.05 0.5"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
 
 <!-- NAV -->
 <nav class="site-nav">
@@ -509,7 +524,7 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait"><img src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
+          <div class="portrait"><img class="duotone" src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
           <div class="name">Sebastien Douville</div>
           <div class="title">Head of Business Development</div>
           <p class="bio">20 years in M&amp;A, integration, and corporate development across PE-backed and high-growth companies. Co-CEO at Spearhead. <strong>Detroit + Toronto</strong>.</p>
