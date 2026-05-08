@@ -66,21 +66,16 @@
   /* HERO */
   #hero { min-height: 100vh; background: var(--ink); color: var(--white); overflow: hidden; padding: 180px 0 120px; display: flex; align-items: center; margin-top: 64px; position: relative; }
 
-  /* Hero background photo layer. To use a real photo, set background-image to an Unsplash hotlink URL.
-     Example: background-image: url('https://images.unsplash.com/photo-XXXXXX?w=2400&q=80'); */
+  /* Hero background photo. Photo by Alex Durynin on Unsplash (scKZFa9oW_Q). */
   .hero-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
     background-color: var(--ink);
-    /* Placeholder: simulates a dark warehouse-like depth with directional light */
-    background-image:
-      radial-gradient(ellipse 60% 80% at 70% 30%, rgba(184,149,122,0.08), transparent 60%),
-      radial-gradient(ellipse 80% 50% at 30% 80%, rgba(26,41,66,0.4), transparent 70%),
-      linear-gradient(135deg, #0a0a0a 0%, #14141a 40%, #0a0a0a 100%);
+    background-image: url('https://images.unsplash.com/photo-1727199079123-ba845d5ab4f6?w=2400&q=80&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.85);
+    filter: brightness(0.78) contrast(1.05);
   }
   .hero-bg::after {
     content: '';
@@ -311,9 +306,7 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <!-- Replace background-image URL below with chosen Unsplash photo when ready -->
-  </div>
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-grid-bg"></div>
   <div class="container hero-content">
