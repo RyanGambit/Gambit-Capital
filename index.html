@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gambit Capital · We build. We deploy. We back.</title>
+<meta name="description" content="Gambit Capital invests in mid-market companies where AI, physical industry, and regulated markets meet. Forward-deployed by default. Capital second." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #141414;
+    --ink-deep: #050505;
+    --ink-blue: #1a2942;
+    --surface: #1a1a1e;
+    --secondary: #52525b;
+    --muted: #a1a1aa;
+    --border: #e4e4e7;
+    --border-light: #f0f0f2;
+    --sand: #f5f5f3;
+    --sand-deep: #ebe9e3;
+    --clay: #b8957a;
+    --clay-soft: #d6c0aa;
+    --page: #fafafa;
+    --white: #ffffff;
+    --working: #16a34a;
+    --font: 'General Sans', system-ui, sans-serif;
+    --display: 'Orbitron', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { font-family: var(--font); font-weight: 400; font-size: 16px; line-height: 1.55; color: var(--ink); background: var(--page); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+  ::selection { background: var(--ink); color: var(--white); }
+  h1, h2, h3, h4 { font-family: var(--font); font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; }
+  a { color: inherit; }
+
+  /* NAV */
+  nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 64px; background: rgba(250,250,250,0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: background 0.2s ease; }
+  .nav-inner { max-width: 1320px; margin: 0 auto; height: 100%; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .brand-mark { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.14em; }
+  .brand-divider { width: 1px; height: 14px; background: var(--border); }
+  .brand-arm { font-family: var(--mono); font-size: 11px; color: var(--secondary); letter-spacing: 0.16em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 4px; align-items: center; }
+  .nav-links a { font-size: 13.5px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 14px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+  .nav-links a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+  .nav-cta { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 10px 18px; border-radius: 100px; text-decoration: none; transition: opacity 0.15s; }
+  .nav-cta:hover { opacity: 0.78; }
+
+  /* LAYOUT */
+  section { position: relative; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+
+  /* SECTION SCAFFOLDING */
+  .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; margin-bottom: 80px; align-items: start; }
+  .section-head .label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); padding-top: 16px; }
+  .section-head .label .num { color: var(--ink); font-weight: 600; }
+  .section-head h2 { font-family: var(--font); font-weight: 500; font-size: clamp(40px, 5vw, 68px); line-height: 1.02; letter-spacing: -0.025em; color: var(--ink); }
+  .section-head h2 .accent { color: var(--secondary); font-weight: 400; }
+
+  /* HERO */
+  #hero { min-height: 100vh; background: var(--ink); color: var(--white); overflow: hidden; padding: 180px 0 120px; display: flex; align-items: center; margin-top: 64px; position: relative; }
+
+  /* Hero background photo layer. To use a real photo, set background-image to an Unsplash hotlink URL.
+     Example: background-image: url('https://images.unsplash.com/photo-XXXXXX?w=2400&q=80'); */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--ink);
+    /* Placeholder: simulates a dark warehouse-like depth with directional light */
+    background-image:
+      radial-gradient(ellipse 60% 80% at 70% 30%, rgba(184,149,122,0.08), transparent 60%),
+      radial-gradient(ellipse 80% 50% at 30% 80%, rgba(26,41,66,0.4), transparent 70%),
+      linear-gradient(135deg, #0a0a0a 0%, #14141a 40%, #0a0a0a 100%);
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.85);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 120px);
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+  }
+
+  /* Overlay ensures text legibility regardless of photo */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.85) 100%),
+      linear-gradient(90deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.3) 60%, rgba(10,10,10,0.5) 100%);
+    pointer-events: none;
+  }
+
+  #hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at 15% 20%, rgba(255,255,255,0.04), transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.025), transparent 55%); pointer-events: none; }
+  .hero-grid-bg { position: absolute; inset: 0; z-index: 1; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 2; width: 100%; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 56px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .hero-eyebrow .dot { width: 6px; height: 6px; background: var(--working); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
+  .hero-eyebrow .sep { color: rgba(255,255,255,0.25); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  h1.hero-title { font-family: var(--font); font-weight: 600; font-size: clamp(64px, 9.5vw, 144px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 56px; color: var(--white); }
+  h1.hero-title .line { display: block; }
+  h1.hero-title .line-3 { color: var(--working); }
+  .hero-subline { max-width: 720px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: rgba(255,255,255,0.75); font-weight: 400; }
+  .hero-subline strong { color: var(--white); font-weight: 500; }
+  .hero-meta { margin-top: 100px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap; }
+  .hero-meta .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .hero-meta .stamp strong { color: var(--white); font-weight: 500; }
+
+  /* THESIS */
+  #thesis { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
+  .thesis-beats { display: flex; flex-direction: column; }
+  .beat { display: grid; grid-template-columns: 140px 1fr; gap: 56px; padding: 40px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .beat:first-child { border-top: 1px solid var(--ink); }
+  .beat:last-child { border-bottom: 1px solid var(--ink); }
+  .beat-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
+  .beat-body { max-width: 760px; }
+  .beat-body h3 { font-family: var(--font); font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--ink); }
+  .beat-body p { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.65; color: var(--secondary); font-weight: 400; }
+  .beat-body p strong { color: var(--ink); font-weight: 500; }
+
+  /* MANDATE */
+  #mandate { padding: 140px 0; background: var(--sand); border-top: 1px solid var(--border); }
+  #mandate .container { max-width: 1100px; }
+  #mandate .section-head { max-width: 920px; margin-left: auto; margin-right: auto; }
+  .mandate-single { max-width: 920px; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--clay); border-radius: 16px; padding: 56px 56px 48px; }
+  .mandate-lede { font-size: clamp(17px, 1.4vw, 19px); line-height: 1.6; color: var(--ink); font-weight: 400; max-width: 720px; margin-bottom: 48px; }
+  .mandate-specs { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
+  .spec-row { padding: 24px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: baseline; }
+  .spec-row:last-child { border-bottom: 1px solid var(--ink); }
+  .spec-key { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--secondary); }
+  .spec-value { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; line-height: 1.4; }
+  .spec-value .small { display: block; margin-top: 6px; font-size: 14px; font-weight: 400; color: var(--secondary); line-height: 1.5; }
+  .spec-value .accent { color: var(--ink); font-weight: 600; }
+  .pass-coda { margin-top: 40px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .pass-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--secondary); }
+  .pass-text { font-size: 15px; color: var(--secondary); font-weight: 400; line-height: 1.5; }
+
+  /* HOW IT WORKS — Moments */
+  #how { padding: 140px 0; background: var(--ink); color: var(--white); border-top: 1px solid var(--ink); position: relative; overflow: hidden; }
+  #how::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); pointer-events: none; }
+  #how .container { position: relative; z-index: 2; }
+  #how .section-head .label { color: rgba(255,255,255,0.55); }
+  #how .section-head .label .num { color: var(--white); }
+  #how .section-head h2 { color: var(--white); }
+  #how .section-head h2 .accent { color: var(--working); }
+  .how-layout { display: grid; grid-template-columns: 200px 1fr; gap: 56px; align-items: start; }
+  .how-graphic { position: sticky; top: 100px; align-self: start; }
+  .how-vertical-rail { width: 100%; height: auto; max-height: 600px; }
+  .moments { display: flex; flex-direction: column; }
+  .moment { padding: 48px 0; border-bottom: 1px solid rgba(255,255,255,0.12); display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; }
+  .moment:first-child { border-top: 1px solid rgba(255,255,255,0.25); padding-top: 0; }
+  .moment:last-child { border-bottom: 1px solid rgba(255,255,255,0.25); }
+  .moment-num { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); padding-top: 10px; grid-column: 1; }
+  .moment-head { grid-column: 2; }
+  .moment-head h3 { font-family: var(--font); font-weight: 500; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--white); }
+  .moment-head .timing { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500; margin-bottom: 16px; }
+  .moment-body { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.7); font-weight: 400; padding-top: 6px; grid-column: 2; }
+
+  /* TEAM */
+  #team { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
+  .team-cohort { margin-bottom: 80px; }
+  .team-cohort:last-child { margin-bottom: 0; }
+  .cohort-head { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--ink); display: flex; align-items: baseline; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .cohort-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); margin-bottom: 8px; }
+  .cohort-label .num { color: var(--ink); font-weight: 600; }
+  .cohort-title { font-family: var(--font); font-weight: 500; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); }
+  .cohort-title .accent { color: var(--secondary); font-weight: 400; }
+  .cohort-desc { font-size: 14px; color: var(--secondary); max-width: 380px; text-align: right; line-height: 1.5; font-weight: 400; }
+  .team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .team-card { border-top: 1px solid var(--border); padding-top: 24px; }
+  .portrait { width: 100%; aspect-ratio: 1 / 1.2; background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; position: relative; overflow: hidden; border-radius: 8px; }
+  .portrait::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--white) 0%, var(--sand) 100%); }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); z-index: 2; transition: filter 0.4s ease; }
+  .team-card:hover .portrait img { filter: grayscale(0) contrast(1); }
+  .portrait .monogram { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; font-size: 48px; color: var(--ink); letter-spacing: 0.04em; z-index: 2; }
+  .portrait.pending::before { background: repeating-linear-gradient(45deg, var(--sand-deep) 0, var(--sand-deep) 6px, var(--sand) 6px, var(--sand) 12px); }
+  .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+  .portrait.ai-worker { background: var(--ink); border: 1px solid var(--ink); }
+  .portrait.ai-worker::before { background: linear-gradient(135deg, var(--ink) 0%, var(--surface) 100%); }
+  .portrait.ai-worker .monogram { color: var(--white); }
+  .portrait.ai-worker::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 14px 14px; pointer-events: none; z-index: 1; }
+  .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
+  .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
+  .team-card .name { font-family: var(--font); font-weight: 500; font-size: 16px; margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+  .team-card.pending-card .name { color: var(--muted); }
+  .team-card .title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
+  .team-card .bio { font-size: 13px; line-height: 1.55; color: var(--secondary); font-weight: 400; margin-bottom: 14px; }
+  .team-card .social { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
+  .team-card .social:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* INSIGHTS */
+  #insights { padding: 140px 0; background: var(--sand); border-top: 1px solid var(--border); }
+  .insights-magazine { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+  .insight-featured { background: var(--white); padding: 48px 40px; border: 1px solid var(--border); border-top: 3px solid var(--clay); border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .insight-featured:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.06); }
+  .insight-list { display: flex; flex-direction: column; gap: 0; }
+  .insight-item { padding: 28px 0; border-bottom: 1px solid var(--border); transition: padding 0.2s ease; }
+  .insight-item:first-child { padding-top: 0; }
+  .insight-item:last-child { border-bottom: 1px solid var(--ink); }
+  .insight-item:hover { padding-left: 8px; }
+  .insight-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  .insight-meta .insight-date { color: var(--muted); }
+  .insight-meta .insight-tag { color: var(--clay); }
+  .insight-featured .insight-meta { margin-bottom: 24px; }
+  .insight-title { font-family: var(--font); font-size: 18px; font-weight: 500; line-height: 1.25; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 16px; }
+  .insight-title-large { font-family: var(--font); font-size: clamp(28px, 3vw, 40px); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 24px; }
+  .insight-title-large .featured-accent { color: var(--clay); }
+  .insight-excerpt-large { font-size: 16px; line-height: 1.6; color: var(--secondary); font-weight: 400; margin-bottom: 28px; }
+  .insight-link { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+  .insight-link .arrow { display: inline-block; transition: transform 0.2s ease; }
+  .insight-link:hover .arrow { transform: translateX(4px); }
+
+  /* CONTACT */
+  #contact { background: var(--ink-deep); color: var(--white); padding: 140px 0 60px; position: relative; overflow: hidden; border-top: 1px solid var(--border); }
+  #contact::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at top, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at top, black 10%, transparent 60%); pointer-events: none; }
+  .contact-inner { position: relative; z-index: 2; }
+  .contact-head { margin-bottom: 56px; }
+  .contact-head .label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); margin-bottom: 32px; display: block; }
+  .contact-head .label .num { color: var(--white); font-weight: 600; }
+  .contact-head h2 { font-family: var(--font); font-weight: 500; font-size: clamp(48px, 7vw, 96px); line-height: 0.98; letter-spacing: -0.035em; color: var(--white); }
+  .contact-head h2 .accent { color: var(--working); }
+  .contact-email { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font); font-size: clamp(24px, 3vw, 36px); color: var(--white); text-decoration: none; padding: 16px 28px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; font-weight: 500; transition: background 0.2s ease, border-color 0.2s ease; margin-bottom: 100px; letter-spacing: -0.015em; }
+  .contact-email:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
+  .contact-email .arrow { font-family: var(--mono); font-size: 18px; transition: transform 0.2s ease; }
+  .contact-email:hover .arrow { transform: translateX(4px); }
+
+  /* FOOTER */
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); position: relative; z-index: 2; }
+  .footer-brand .footer-mark { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: 0.14em; color: var(--white); margin-bottom: 6px; }
+  .footer-brand .footer-arm { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 18px; }
+  .footer-brand p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 320px; }
+  .footer-col h4 { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; font-size: 13.5px; color: rgba(255,255,255,0.7); font-weight: 400; }
+  .footer-col ul li .city-name { display: block; color: var(--white); font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
+  .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s ease; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom { padding-top: 28px; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); position: relative; z-index: 2; gap: 16px; flex-wrap: wrap; }
+  .footer-bottom .legal-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s ease; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .nav-inner { padding: 0 28px; }
+    .nav-links { gap: 0; }
+    .nav-links a { padding: 6px 10px; font-size: 13px; }
+    .section-head, .thesis-body { grid-template-columns: 1fr; gap: 40px; }
+    .beat { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+    .moment { grid-template-columns: 1fr; gap: 16px; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .insights-magazine { grid-template-columns: 1fr; gap: 32px; }
+    .cohort-desc { text-align: left; }
+    .mandate-single { padding: 40px 36px 32px; }
+    .how-layout { grid-template-columns: 1fr; gap: 32px; }
+    .how-graphic { display: none; }
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .nav-inner { padding: 0 20px; }
+    .nav-links { display: none; }
+    .brand-divider, .brand-arm { display: none; }
+    section { padding: 90px 0 !important; }
+    #hero { padding: 120px 0 60px; min-height: auto; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .spec-row { grid-template-columns: 1fr; gap: 8px; }
+    .insight-featured { padding: 32px 24px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .mandate-single { padding: 32px 24px 28px; border-radius: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">GAMBIT</span>
+      <span class="brand-divider"></span>
+      <span class="brand-arm">Capital</span>
+    </a>
+    <div class="nav-links">
+      <a href="#thesis">Thesis</a>
+      <a href="#mandate">Mandate</a>
+      <a href="#how">How we invest</a>
+      <a href="#team">Team</a>
+      <a href="#insights">Insights</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Replace background-image URL below with chosen Unsplash photo when ready -->
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>Toronto</span>
+      <span class="sep">·</span>
+      <span>Detroit</span>
+      <span class="sep">·</span>
+      <span>Hong Kong</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line">We build.</span>
+      <span class="line">We deploy.</span>
+      <span class="line line-3">We back.</span>
+    </h1>
+
+    <p class="hero-subline">
+      From the pioneers at Gambit. We've watched AI compound enterprise value in physical industries. <strong>Now we're putting that capital to work</strong>, with forward-deployed teams and AI workers in every deal.
+    </p>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section id="thesis">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="num">01</span> · Thesis</div>
+      <h2>The next decade of outsized returns belongs to operators who put <span class="accent">AI inside the physical world.</span></h2>
+    </div>
+
+    <div class="thesis-beats">
+      <div class="beat">
+        <div class="beat-label">01</div>
+        <div class="beat-body">
+          <h3>AI doesn't just accelerate. It unlocks.</h3>
+          <p>Inside the right operator, AI workers do two things that compound. They accelerate the parts of the value chain that already work: pricing, ops, customer flow. They unlock parts that didn't exist: new products, new margins, new defensibility. <strong>The first is helpful. The second is what creates outsized returns.</strong></p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-label">02</div>
+        <div class="beat-body">
+          <h3>We back companies that are hard to disrupt.</h3>
+          <p>Logistics, healthcare, manufacturing, field services. Workflows the physical world or regulation makes hard to copy, hard to undercut, expensive to ignore. <strong>AI inside these workflows compounds. AI in front of a SaaS dashboard does not.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANDATE -->
+<section id="mandate">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="num">02</span> · Mandate</div>
+      <h2>Looking for the next generation of <span class="accent">compounders.</span></h2>
+    </div>
+
+    <div class="mandate-single">
+      <p class="mandate-lede">Operators in industries that are hard to disrupt.</p>
+
+      <div class="mandate-specs">
+        <div class="spec-row">
+          <div class="spec-key">Enterprise Value</div>
+          <div class="spec-value">Up to <span class="accent">USD $100M</span></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Structures</div>
+          <div class="spec-value">Control or significant influence. Buyouts, JVs, growth equity, structured deals.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Sectors</div>
+          <div class="spec-value">Logistics, healthcare, manufacturing, field services</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Geography</div>
+          <div class="spec-value">Toronto · Detroit · Hong Kong</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Hold</div>
+          <div class="spec-value">Long hold. Operator continuity preferred.</div>
+        </div>
+      </div>
+
+      <div class="pass-coda">
+        <span class="pass-label">What we pass on</span>
+        <span class="pass-text">Pure software. Roll-ups for the sake of EBITDA arithmetic.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="num">03</span> · How we invest</div>
+      <h2>We work first. <span class="accent">We invest second.</span></h2>
+    </div>
+
+    <div class="how-layout">
+      <div class="how-graphic">
+        <svg class="how-vertical-rail" viewBox="0 0 80 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+          <line x1="40" y1="20" x2="40" y2="580" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+          <line x1="40" y1="20" x2="40" y2="200" stroke="var(--clay)" stroke-width="1" />
+          <circle cx="40" cy="40" r="6" fill="var(--clay)" />
+          <circle cx="40" cy="40" r="14" fill="none" stroke="var(--clay)" stroke-width="1" stroke-opacity="0.3" />
+          <circle cx="40" cy="300" r="5" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+          <circle cx="40" cy="560" r="5" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+          <text x="60" y="44" fill="var(--clay)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">PRE-DEAL</text>
+          <text x="60" y="304" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">DEPLOY</text>
+          <text x="60" y="564" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">COMPOUND</text>
+        </svg>
+      </div>
+
+      <div class="moments">
+      <div class="moment">
+        <div class="moment-num">01</div>
+        <div class="moment-head">
+          <h3>We are already inside.</h3>
+          <div class="timing">Pre-deal</div>
+        </div>
+        <div class="moment-body">
+          Forward-deployed engagement on the operating side. Months of building, embedding, watching the business change. By the time capital is on the table, we know the unit economics, the operating ceiling, and the people. Diligence is a formality.
+        </div>
+      </div>
+
+      <div class="moment">
+        <div class="moment-num">02</div>
+        <div class="moment-head">
+          <h3>Capital meets the inflection.</h3>
+        </div>
+        <div class="moment-body">
+          A growth plan. A tuck-in. A succession event. A recap. <strong>We underwrite from inside, not across the table.</strong>
+        </div>
+      </div>
+
+      <div class="moment">
+        <div class="moment-num">03</div>
+        <div class="moment-head">
+          <h3>The work and the capital compound.</h3>
+          <div class="timing">Through the hold and beyond</div>
+        </div>
+        <div class="moment-body">
+          The team stays embedded. The AI workforce keeps running. <strong>Workers built for one portfolio company become tools the next one inherits, on day one.</strong>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="num">04</span> · Team</div>
+      <h2>Five partners. Five AI workers.<br><span class="accent">One team.</span></h2>
+    </div>
+
+    <!-- Cohort 1: Partners -->
+    <div class="team-cohort">
+      <div class="cohort-head">
+        <div>
+          <div class="cohort-label"><span class="num">Cohort 01</span></div>
+          <div class="cohort-title">The <span class="accent">partners</span>.</div>
+        </div>
+        <div class="cohort-desc">Each of us has run, built, scaled, or unwound a real company. We have closed deals, signed paychecks, and stayed past the parts of the work that hurt. That is the bar for sitting at this table.</div>
+      </div>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="portrait"><img src="img/team-hai.jpg" alt="Hai Tran-Viet" loading="lazy"></div>
+          <div class="name">Hai Tran-Viet</div>
+          <div class="title">Head, Investments</div>
+          <p class="bio">20+ years in private equity and investment banking. Co-Managing Partner at <strong>CBGF</strong> since 2018. Previously Signal Hill, TD Capital, CIBC. Columbia MBA, CFA.</p>
+          <a href="#" class="social">LinkedIn ↗</a>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait"><img src="img/team-pat.jpg" alt="Patrick Belliveau" loading="lazy"></div>
+          <div class="name">Patrick Belliveau</div>
+          <div class="title">Head of AI</div>
+          <p class="bio">15 years building technology companies and go-to-market across automotive and enterprise. <strong>Ex-Ford</strong>. Architect of the operating model behind Gambit's mid-market embed.</p>
+          <a href="#" class="social">LinkedIn ↗</a>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait"><img src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
+          <div class="name">Sebastien Douville</div>
+          <div class="title">Head of Business Development</div>
+          <p class="bio">20 years in M&amp;A, integration, and corporate development across PE-backed and high-growth companies. Co-CEO at Spearhead. <strong>Detroit + Toronto</strong>.</p>
+          <a href="#" class="social">LinkedIn ↗</a>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait"><img src="img/team-ryan.jpg" alt="Ryan Burgio" loading="lazy"></div>
+          <div class="name">Ryan Burgio</div>
+          <div class="title">Head of Creative &amp; Strategy</div>
+          <p class="bio">20 years in brand and creative strategy for growth-stage companies. The voice of the firm. Translates technical work into language buyers actually act on.</p>
+          <a href="#" class="social">LinkedIn ↗</a>
+        </div>
+
+        <div class="team-card pending-card">
+          <div class="portrait pending"><span class="monogram">TBA</span></div>
+          <div class="name">Partner pending</div>
+          <div class="title">Head, Portfolio Management</div>
+          <p class="bio">15+ years at CPPIB in private equity. Led portfolio company oversight and value creation across industrials, consumer, and financial services. Brings institutional governance discipline to Gambit Capital's mid-market mandate.</p>
+          <a href="#" class="social">LinkedIn ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cohort 2: AI Workers -->
+    <div class="team-cohort">
+      <div class="cohort-head">
+        <div>
+          <div class="cohort-label"><span class="num">Cohort 02</span></div>
+          <div class="cohort-title">The <span class="accent">desk</span>.</div>
+        </div>
+        <div class="cohort-desc">Five AI workers running alongside the partnership. Sourcing, diligence, modeling, monitoring, reporting. On staff, full time.</div>
+      </div>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="portrait ai-worker">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">B</span>
+          </div>
+          <div class="name">Bogan</div>
+          <div class="title">Origination &amp; Screening</div>
+          <p class="bio">Reads CIMs, runs deal screens, builds buyer and seller profiles, drafts initial memos, surfaces deals matching the mandate. Already in production at Spearhead.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">M</span>
+          </div>
+          <div class="name">Margin</div>
+          <div class="title">Diligence Coordinator</div>
+          <p class="bio">Coordinates diligence across financial, commercial, legal, and operational. Ingests data rooms, flags anomalies, drafts findings, keeps the IC in sync with the deal team.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">L</span>
+          </div>
+          <div class="name">Ledger</div>
+          <div class="title">IC Memo &amp; Thesis</div>
+          <p class="bio">Writes IC memos in the firm's voice. Drafts investment theses, value creation plans, and post-mortems. Produces every working document at the standard a partner would sign.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">P</span>
+          </div>
+          <div class="name">Pulse</div>
+          <div class="title">Portfolio &amp; KPI Monitoring</div>
+          <p class="bio">Watches portfolio company KPIs daily. Flags trend breaks, covenant risk, customer concentration drift, and pricing changes before they hit a quarterly board pack.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">Q</span>
+          </div>
+          <div class="name">Quartermaster</div>
+          <div class="title">LP Reporting &amp; Capital Stack</div>
+          <p class="bio">Maintains the cap table, tracks distributions, drafts LP letters, runs fund-level performance reporting. The work that grows linearly with AUM and steals partner time.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="num">05</span> · News &amp; Insights</div>
+      <h2>Long-form thinking on <span class="accent">AI, capital, and the operators</span> rebuilding mid-market businesses.</h2>
+    </div>
+
+    <div class="insights-magazine">
+      <article class="insight-featured">
+        <div class="insight-meta">
+          <span class="insight-date">May 2026</span>
+          <span class="insight-tag">Operating Model</span>
+        </div>
+        <h3 class="insight-title-large">We don't source deals.<br><span class="featured-accent">We manufacture them.</span></h3>
+        <p class="insight-excerpt-large">Why years of forward-deployed work changes what diligence looks like, and why every Gambit Capital investment starts before there is a deal.</p>
+        <a href="#" class="insight-link">Read more <span class="arrow">→</span></a>
+      </article>
+
+      <div class="insight-list">
+        <article class="insight-item">
+          <div class="insight-meta">
+            <span class="insight-date">April 2026</span>
+            <span class="insight-tag">AI Workers</span>
+          </div>
+          <h3 class="insight-title">What an AI investment desk actually does.</h3>
+          <a href="#" class="insight-link">Read more <span class="arrow">→</span></a>
+        </article>
+
+        <article class="insight-item">
+          <div class="insight-meta">
+            <span class="insight-date">March 2026</span>
+            <span class="insight-tag">Mid-market</span>
+          </div>
+          <h3 class="insight-title">Why JV structures will eat the mid-market.</h3>
+          <a href="#" class="insight-link">Read more <span class="arrow">→</span></a>
+        </article>
+
+        <article class="insight-item">
+          <div class="insight-meta">
+            <span class="insight-date">February 2026</span>
+            <span class="insight-tag">Owner POV</span>
+          </div>
+          <h3 class="insight-title">Going on the offense before the next owner does.</h3>
+          <a href="#" class="insight-link">Read more <span class="arrow">→</span></a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container contact-inner">
+    <div class="contact-head">
+      <span class="label"><span class="num">06</span> · Contact</span>
+      <h2>We'd <span class="accent">like</span> to hear from you.</h2>
+    </div>
+
+    <a href="mailto:capital@gambitco.io" class="contact-email">capital@gambitco.io <span class="arrow">→</span></a>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-mark">GAMBIT</div>
+        <div class="footer-arm">Capital</div>
+        <p>We work first. We invest second.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Offices</h4>
+        <ul>
+          <li><span class="city-name">Toronto</span></li>
+          <li><span class="city-name">Detroit</span></li>
+          <li><span class="city-name">Hong Kong</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#thesis">Thesis</a></li>
+          <li><a href="#mandate">Mandate</a></li>
+          <li><a href="#how">How we invest</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#insights">Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:capital@gambitco.io">capital@gambitco.io</a></li>
+          <li><a href="mailto:deals@gambitco.io">deals@gambitco.io</a></li>
+          <li><a href="mailto:lp@gambitco.io">lp@gambitco.io</a></li>
+          <li><a href="https://gambitco.io" target="_blank" rel="noopener noreferrer">gambitco.io</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Gambit Capital. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Disclosures</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Nav background on scroll
+  const nav = document.querySelector('nav.site-nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 50 ? 'rgba(250, 250, 250, 0.95)' : 'rgba(250, 250, 250, 0.85)';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
