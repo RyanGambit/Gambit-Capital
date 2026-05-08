@@ -175,12 +175,7 @@
   .team-card { border-top: 1px solid var(--border); padding-top: 24px; }
   .portrait { width: 100%; aspect-ratio: 1 / 1.2; background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; position: relative; overflow: hidden; border-radius: 8px; }
   .portrait::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--white) 0%, var(--sand) 100%); }
-  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); z-index: 2; transition: filter 0.4s ease; }
-  /* Per-portrait framing — equalize head sizes across team photos */
-  .portrait img.p-hai { transform: scale(1.45); transform-origin: 50% 28%; }
-  .portrait img.p-seb { transform: scale(1.12); transform-origin: 50% 36%; }
-  .portrait img.p-ryan { transform: scale(1.06); transform-origin: 50% 40%; }
-  .team-card:hover .portrait img { filter: grayscale(0) contrast(1); }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
   .portrait .monogram { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; font-size: 48px; color: var(--ink); letter-spacing: 0.04em; z-index: 2; }
   .portrait.pending::before { background: radial-gradient(circle at 50% 35%, var(--sand) 0%, var(--sand-deep) 70%); }
   .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; color: var(--secondary); font-weight: 500; text-transform: uppercase; }
@@ -498,7 +493,7 @@
       <div class="team-grid">
 
         <div class="team-card">
-          <div class="portrait"><img class="p-hai" src="img/team-hai.jpg" alt="Hai Tran-Viet" loading="lazy"></div>
+          <div class="portrait"><img src="img/team-hai.jpg" alt="Hai Tran-Viet" loading="lazy"></div>
           <div class="name">Hai Tran-Viet</div>
           <div class="title">Head, Investments</div>
           <p class="bio">20+ years in private equity and investment banking. Co-Managing Partner at <strong>CBGF</strong> since 2018. Previously Signal Hill, TD Capital, CIBC. Columbia MBA, CFA.</p>
@@ -506,7 +501,7 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait"><img class="p-pat" src="img/team-pat.jpg" alt="Patrick Belliveau" loading="lazy"></div>
+          <div class="portrait"><img src="img/team-pat.jpg" alt="Patrick Belliveau" loading="lazy"></div>
           <div class="name">Patrick Belliveau</div>
           <div class="title">Head of AI</div>
           <p class="bio">15 years building technology companies and go-to-market across automotive and enterprise. <strong>Ex-Ford</strong>. Architect of the operating model behind Gambit's mid-market embed.</p>
@@ -514,7 +509,7 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait"><img class="p-seb" src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
+          <div class="portrait"><img src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
           <div class="name">Sebastien Douville</div>
           <div class="title">Head of Business Development</div>
           <p class="bio">20 years in M&amp;A, integration, and corporate development across PE-backed and high-growth companies. Co-CEO at Spearhead. <strong>Detroit + Toronto</strong>.</p>
@@ -522,7 +517,7 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait"><img class="p-ryan" src="img/team-ryan.jpg" alt="Ryan Burgio" loading="lazy"></div>
+          <div class="portrait"><img src="img/team-ryan.jpg" alt="Ryan Burgio" loading="lazy"></div>
           <div class="name">Ryan Burgio</div>
           <div class="title">Head of Creative &amp; Strategy</div>
           <p class="bio">20 years in brand and creative strategy for growth-stage companies. The voice of the firm. Translates technical work into language buyers actually act on.</p>
