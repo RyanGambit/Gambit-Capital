@@ -207,8 +207,8 @@
   }
   .how-station {
     display: grid;
-    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-    gap: 48px;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    gap: 56px;
     align-items: start;
     position: relative;
   }
@@ -217,7 +217,7 @@
   .how-station.station-3 { grid-column: 2 / span 8; }
   .station-marker { position: relative; }
   .station-marker .station-phase { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); margin-bottom: 20px; }
-  .station-marker .station-num { font-family: var(--display); font-weight: 600; font-size: clamp(112px, 14vw, 200px); line-height: 0.88; letter-spacing: -0.04em; color: var(--white); }
+  .station-marker .station-num { font-family: var(--display); font-weight: 600; font-size: clamp(112px, 13vw, 210px); line-height: 0.88; letter-spacing: -0.04em; color: var(--white); }
   .station-marker .station-timing { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 18px; }
   .station-body { padding-top: 32px; }
   .station-body h3 { font-family: var(--font); font-weight: 500; font-size: clamp(28px, 2.8vw, 42px); line-height: 1.08; letter-spacing: -0.025em; color: var(--white); margin-bottom: 24px; }
@@ -338,10 +338,10 @@
     .cohort-desc { text-align: left; }
     .mandate-single { padding: 40px 36px 32px; }
     .how-flow { row-gap: 64px; padding: 0 28px; }
-    .how-station, .how-station.station-1, .how-station.station-2, .how-station.station-3 { grid-column: 1 / -1; grid-template-columns: 160px 1fr; gap: 32px; }
+    .how-station, .how-station.station-1, .how-station.station-2, .how-station.station-3 { grid-column: 1 / -1; grid-template-columns: minmax(0, 240px) 1fr; gap: 32px; }
     .how-flow::before { left: 30px; }
     .how-watermark { font-size: clamp(140px, 22vw, 240px); top: 32px; right: 24px; }
-    .station-marker .station-num { font-size: clamp(80px, 14vw, 140px); }
+    .station-marker .station-num { font-size: clamp(80px, 14vw, 160px); }
   }
 
   @media (max-width: 720px) {
