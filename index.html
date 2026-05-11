@@ -148,26 +148,81 @@
   .pass-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--secondary); }
   .pass-text { font-size: 15px; color: var(--secondary); font-weight: 400; line-height: 1.5; }
 
-  /* HOW IT WORKS — Moments */
-  #how { padding: 140px 0; background: var(--ink); color: var(--white); border-top: 1px solid var(--ink); position: relative; overflow: hidden; }
-  #how::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); pointer-events: none; }
+  /* HOW IT WORKS — broken-grid editorial blueprint */
+  #how { padding: 140px 0 160px; background: var(--ink); color: var(--white); border-top: 1px solid var(--ink); position: relative; overflow: hidden; }
+  #how::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,149,122,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,149,122,0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 25%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+  }
   #how .container { position: relative; z-index: 2; }
   #how .section-head .label { color: rgba(255,255,255,0.55); }
   #how .section-head .label .num { color: var(--white); }
   #how .section-head h2 { color: var(--white); }
   #how .section-head h2 .accent { color: rgba(255,255,255,0.5); }
-  .how-layout { display: grid; grid-template-columns: 200px 1fr; gap: 56px; align-items: start; }
-  .how-graphic { position: sticky; top: 100px; align-self: start; }
-  .how-vertical-rail { width: 100%; height: auto; max-height: 600px; overflow: visible; }
-  .moments { display: flex; flex-direction: column; }
-  .moment { padding: 48px 0; border-bottom: 1px solid rgba(255,255,255,0.12); display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; }
-  .moment:first-child { border-top: 1px solid rgba(255,255,255,0.25); padding-top: 0; }
-  .moment:last-child { border-bottom: 1px solid rgba(255,255,255,0.25); }
-  .moment-num { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); padding-top: 10px; grid-column: 1; }
-  .moment-head { grid-column: 2; }
-  .moment-head h3 { font-family: var(--font); font-weight: 500; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--white); }
-  .moment-head .timing { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500; margin-bottom: 16px; }
-  .moment-body { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.7); font-weight: 400; padding-top: 6px; grid-column: 2; }
+  .how-watermark {
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(220px, 32vw, 460px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.07);
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+  }
+  .how-intro { margin-bottom: 120px; }
+  .how-flow {
+    position: relative;
+    z-index: 2;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 96px;
+  }
+  .how-flow::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    bottom: 60px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(184,149,122,0.5) 0%, rgba(184,149,122,0.15) 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .how-station {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    position: relative;
+  }
+  .how-station.station-1 { grid-column: 1 / span 8; }
+  .how-station.station-2 { grid-column: 5 / span 8; }
+  .how-station.station-3 { grid-column: 2 / span 8; }
+  .station-marker { position: relative; }
+  .station-marker .station-phase { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); margin-bottom: 20px; }
+  .station-marker .station-num { font-family: var(--display); font-weight: 600; font-size: clamp(112px, 14vw, 200px); line-height: 0.88; letter-spacing: -0.04em; color: var(--white); }
+  .station-marker .station-timing { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 18px; }
+  .station-body { padding-top: 32px; }
+  .station-body h3 { font-family: var(--font); font-weight: 500; font-size: clamp(28px, 2.8vw, 42px); line-height: 1.08; letter-spacing: -0.025em; color: var(--white); margin-bottom: 24px; }
+  .station-body p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.72); font-weight: 400; }
+  .station-body p strong { color: var(--white); font-weight: 500; }
 
   /* TEAM */
   #team { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
@@ -202,10 +257,6 @@
   .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
   .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
   .ai-id { position: absolute; bottom: 12px; right: 14px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); }
-  /* AI worker live-status footer */
-  .ai-status { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); }
-  .ai-status .live-dot { width: 6px; height: 6px; background: var(--working); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; flex-shrink: 0; }
-  .ai-status .live-sep { color: var(--border); }
   .team-card .name { font-family: var(--font); font-weight: 500; font-size: 16px; margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
   .team-card.pending-card .name { color: var(--muted); }
   .team-card .title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
@@ -286,7 +337,11 @@
     .insights-magazine { grid-template-columns: 1fr; gap: 32px; }
     .cohort-desc { text-align: left; }
     .mandate-single { padding: 40px 36px 32px; }
-    .how-layout { grid-template-columns: 100px 1fr; gap: 28px; }
+    .how-flow { row-gap: 64px; padding: 0 28px; }
+    .how-station, .how-station.station-1, .how-station.station-2, .how-station.station-3 { grid-column: 1 / -1; grid-template-columns: 160px 1fr; gap: 32px; }
+    .how-flow::before { left: 30px; }
+    .how-watermark { font-size: clamp(140px, 22vw, 240px); top: 32px; right: 24px; }
+    .station-marker .station-num { font-size: clamp(80px, 14vw, 140px); }
   }
 
   @media (max-width: 720px) {
@@ -302,8 +357,12 @@
     .insight-featured { padding: 32px 24px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .mandate-single { padding: 32px 24px 28px; border-radius: 12px; }
-    .how-layout { grid-template-columns: 1fr; gap: 32px; }
-    .how-graphic { display: none; }
+    .how-flow { padding: 0 20px; row-gap: 56px; }
+    .how-station, .how-station.station-1, .how-station.station-2, .how-station.station-3 { grid-template-columns: 1fr; gap: 16px; }
+    .how-flow::before { display: none; }
+    .how-watermark { display: none; }
+    .station-marker .station-num { font-size: 80px; }
+    .station-body { padding-top: 8px; }
   }
 </style>
 </head>
@@ -453,61 +512,50 @@
 
 <!-- HOW IT WORKS -->
 <section id="how">
-  <div class="container">
+  <div class="how-watermark" aria-hidden="true">03</div>
+  <div class="container how-intro">
     <div class="section-head">
       <div class="label"><span class="num">03</span> · How we invest</div>
       <h2>We work first. <span class="accent">We invest second.</span></h2>
     </div>
+  </div>
 
-    <div class="how-layout">
-      <div class="how-graphic">
-        <svg class="how-vertical-rail" viewBox="0 0 80 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
-          <line x1="40" y1="20" x2="40" y2="580" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-          <line x1="40" y1="20" x2="40" y2="200" stroke="var(--clay)" stroke-width="1" />
-          <circle cx="40" cy="40" r="6" fill="var(--clay)" />
-          <circle cx="40" cy="40" r="14" fill="none" stroke="var(--clay)" stroke-width="1" stroke-opacity="0.3" />
-          <circle cx="40" cy="300" r="5" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-          <circle cx="40" cy="560" r="5" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-          <text x="60" y="44" fill="var(--clay)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">PRE-DEAL</text>
-          <text x="60" y="304" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">DEPLOY</text>
-          <text x="60" y="564" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono" font-size="10" letter-spacing="2" font-weight="500">COMPOUND</text>
-        </svg>
+  <div class="how-flow">
+    <article class="how-station station-1">
+      <div class="station-marker">
+        <div class="station-phase">Pre-deal</div>
+        <div class="station-num">01</div>
+        <div class="station-timing">Months before capital</div>
       </div>
+      <div class="station-body">
+        <h3>We are already inside.</h3>
+        <p>Forward-deployed engagement on the operating side. Months of building, embedding, watching the business change. By the time capital is on the table, we know the unit economics, the operating ceiling, and the people. <strong>Diligence is a formality.</strong></p>
+      </div>
+    </article>
 
-      <div class="moments">
-      <div class="moment">
-        <div class="moment-num">01</div>
-        <div class="moment-head">
-          <h3>We are already inside.</h3>
-          <div class="timing">Pre-deal</div>
-        </div>
-        <div class="moment-body">
-          Forward-deployed engagement on the operating side. Months of building, embedding, watching the business change. By the time capital is on the table, we know the unit economics, the operating ceiling, and the people. Diligence is a formality.
-        </div>
+    <article class="how-station station-2">
+      <div class="station-marker">
+        <div class="station-phase">Deploy</div>
+        <div class="station-num">02</div>
+        <div class="station-timing">At the inflection</div>
       </div>
+      <div class="station-body">
+        <h3>Capital meets the inflection.</h3>
+        <p>A growth plan. A tuck-in. A succession event. A recap. <strong>We underwrite from inside, not across the table.</strong></p>
+      </div>
+    </article>
 
-      <div class="moment">
-        <div class="moment-num">02</div>
-        <div class="moment-head">
-          <h3>Capital meets the inflection.</h3>
-        </div>
-        <div class="moment-body">
-          A growth plan. A tuck-in. A succession event. A recap. <strong>We underwrite from inside, not across the table.</strong>
-        </div>
+    <article class="how-station station-3">
+      <div class="station-marker">
+        <div class="station-phase">Compound</div>
+        <div class="station-num">03</div>
+        <div class="station-timing">Through the hold</div>
       </div>
-
-      <div class="moment">
-        <div class="moment-num">03</div>
-        <div class="moment-head">
-          <h3>The work and the capital compound.</h3>
-          <div class="timing">Through the hold and beyond</div>
-        </div>
-        <div class="moment-body">
-          The team stays embedded. The AI workforce keeps running. <strong>Workers built for one portfolio company become tools the next one inherits, on day one.</strong>
-        </div>
+      <div class="station-body">
+        <h3>The work and the capital compound.</h3>
+        <p>The team stays embedded. The AI workforce keeps running. <strong>Workers built for one portfolio company become tools the next one inherits, on day one.</strong></p>
       </div>
-      </div>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -595,7 +643,6 @@
           <div class="name">Bogan</div>
           <div class="title">Origination &amp; Screening</div>
           <p class="bio">Reads CIMs, runs deal screens, builds buyer and seller profiles, drafts initial memos, surfaces deals matching the mandate. Already in production at Spearhead.</p>
-          <div class="ai-status"><span class="live-dot"></span><span>47 scans this week</span><span class="live-sep">·</span><span>12m</span></div>
         </div>
 
         <div class="team-card">
@@ -607,7 +654,6 @@
           <div class="name">Margin</div>
           <div class="title">Diligence Coordinator</div>
           <p class="bio">Coordinates diligence across financial, commercial, legal, and operational. Ingests data rooms, flags anomalies, drafts findings, keeps the IC in sync with the deal team.</p>
-          <div class="ai-status"><span class="live-dot"></span><span>3 rooms active</span><span class="live-sep">·</span><span>1h</span></div>
         </div>
 
         <div class="team-card">
@@ -619,7 +665,6 @@
           <div class="name">Ledger</div>
           <div class="title">IC Memo &amp; Thesis</div>
           <p class="bio">Writes IC memos in the firm's voice. Drafts investment theses, value creation plans, and post-mortems. Produces every working document at the standard a partner would sign.</p>
-          <div class="ai-status"><span class="live-dot"></span><span>Drafting v3.2</span><span class="live-sep">·</span><span>4h</span></div>
         </div>
 
         <div class="team-card">
@@ -631,7 +676,6 @@
           <div class="name">Pulse</div>
           <div class="title">Portfolio &amp; KPI Monitoring</div>
           <p class="bio">Watches portfolio company KPIs daily. Flags trend breaks, covenant risk, customer concentration drift, and pricing changes before they hit a quarterly board pack.</p>
-          <div class="ai-status"><span class="live-dot"></span><span>Watching 4 cos</span><span class="live-sep">·</span><span>22m</span></div>
         </div>
 
         <div class="team-card">
@@ -643,7 +687,6 @@
           <div class="name">Quartermaster</div>
           <div class="title">LP Reporting &amp; Capital Stack</div>
           <p class="bio">Maintains the cap table, tracks distributions, drafts LP letters, runs fund-level performance reporting. The work that grows linearly with AUM and steals partner time.</p>
-          <div class="ai-status"><span class="live-dot"></span><span>5 LPs syncing</span><span class="live-sep">·</span><span>6h</span></div>
         </div>
 
       </div>
