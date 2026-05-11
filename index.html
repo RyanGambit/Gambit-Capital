@@ -112,6 +112,13 @@
   .hero-subline { max-width: 720px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: rgba(255,255,255,0.75); font-weight: 400; }
   .hero-subline strong { color: var(--white); font-weight: 500; }
 
+  /* HERO CODA — editorial typography break between hero and thesis */
+  .hero-coda { background: var(--ink); color: var(--white); padding: 56px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); }
+  .coda-track { display: flex; white-space: nowrap; animation: coda-scroll 60s linear infinite; will-change: transform; }
+  .coda-track span { font-family: var(--font); font-weight: 500; font-size: clamp(72px, 14vw, 200px); line-height: 1; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.55); padding-right: 0.5em; flex-shrink: 0; }
+  @keyframes coda-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .coda-track { animation: none; } }
+
   /* THESIS */
   #thesis { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
   .thesis-beats { display: flex; flex-direction: column; }
@@ -195,6 +202,10 @@
   .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
   .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
   .ai-id { position: absolute; bottom: 12px; right: 14px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); }
+  /* AI worker live-status footer */
+  .ai-status { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); }
+  .ai-status .live-dot { width: 6px; height: 6px; background: var(--working); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; flex-shrink: 0; }
+  .ai-status .live-sep { color: var(--border); }
   .team-card .name { font-family: var(--font); font-weight: 500; font-size: 16px; margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
   .team-card.pending-card .name { color: var(--muted); }
   .team-card .title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
@@ -355,6 +366,18 @@
     <p class="hero-subline">
       AI compounds enterprise value in physical industries. As operators we've seen it first hand. <strong>Now we're putting that capital to work,</strong> with forward-deployed teams and AI workers in every deal.
     </p>
+  </div>
+</section>
+
+<!-- HERO CODA -->
+<section class="hero-coda" aria-hidden="true">
+  <div class="coda-track">
+    <span>AI inside the physical world ·&nbsp;</span>
+    <span>AI inside the physical world ·&nbsp;</span>
+    <span>AI inside the physical world ·&nbsp;</span>
+    <span>AI inside the physical world ·&nbsp;</span>
+    <span>AI inside the physical world ·&nbsp;</span>
+    <span>AI inside the physical world ·&nbsp;</span>
   </div>
 </section>
 
@@ -572,6 +595,7 @@
           <div class="name">Bogan</div>
           <div class="title">Origination &amp; Screening</div>
           <p class="bio">Reads CIMs, runs deal screens, builds buyer and seller profiles, drafts initial memos, surfaces deals matching the mandate. Already in production at Spearhead.</p>
+          <div class="ai-status"><span class="live-dot"></span><span>47 scans this week</span><span class="live-sep">·</span><span>12m</span></div>
         </div>
 
         <div class="team-card">
@@ -583,6 +607,7 @@
           <div class="name">Margin</div>
           <div class="title">Diligence Coordinator</div>
           <p class="bio">Coordinates diligence across financial, commercial, legal, and operational. Ingests data rooms, flags anomalies, drafts findings, keeps the IC in sync with the deal team.</p>
+          <div class="ai-status"><span class="live-dot"></span><span>3 rooms active</span><span class="live-sep">·</span><span>1h</span></div>
         </div>
 
         <div class="team-card">
@@ -594,6 +619,7 @@
           <div class="name">Ledger</div>
           <div class="title">IC Memo &amp; Thesis</div>
           <p class="bio">Writes IC memos in the firm's voice. Drafts investment theses, value creation plans, and post-mortems. Produces every working document at the standard a partner would sign.</p>
+          <div class="ai-status"><span class="live-dot"></span><span>Drafting v3.2</span><span class="live-sep">·</span><span>4h</span></div>
         </div>
 
         <div class="team-card">
@@ -605,6 +631,7 @@
           <div class="name">Pulse</div>
           <div class="title">Portfolio &amp; KPI Monitoring</div>
           <p class="bio">Watches portfolio company KPIs daily. Flags trend breaks, covenant risk, customer concentration drift, and pricing changes before they hit a quarterly board pack.</p>
+          <div class="ai-status"><span class="live-dot"></span><span>Watching 4 cos</span><span class="live-sep">·</span><span>22m</span></div>
         </div>
 
         <div class="team-card">
@@ -616,6 +643,7 @@
           <div class="name">Quartermaster</div>
           <div class="title">LP Reporting &amp; Capital Stack</div>
           <p class="bio">Maintains the cap table, tracks distributions, drafts LP letters, runs fund-level performance reporting. The work that grows linearly with AUM and steals partner time.</p>
+          <div class="ai-status"><span class="live-dot"></span><span>5 LPs syncing</span><span class="live-sep">·</span><span>6h</span></div>
         </div>
 
       </div>
