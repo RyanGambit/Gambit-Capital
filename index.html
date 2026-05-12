@@ -242,20 +242,24 @@
   .portrait.pending::before { background: radial-gradient(circle at 50% 35%, var(--sand) 0%, var(--sand-deep) 70%); }
   .portrait.pending .monogram { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; color: var(--secondary); font-weight: 500; text-transform: uppercase; }
 
-  /* AI WORKER CARDS */
-  .portrait.ai-worker { background: var(--ink); border: 1px solid var(--ink); }
-  .portrait.ai-worker::before { background: linear-gradient(155deg, var(--ink) 0%, var(--surface) 100%); }
-  .portrait.ai-worker .monogram { font-size: 72px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
-  .portrait.ai-worker::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-  .portrait.ai-lane::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 9px); }
-  .portrait.ai-tally::after { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 10px 10px; }
-  .portrait.ai-roster::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 22px); }
-  .portrait.ai-forecast::after { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px); }
-  .portrait.ai-lookout::after { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px); }
-  .portrait.ai-mill::after { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 12px); }
-  .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
-  .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
-  .ai-id { position: absolute; bottom: 12px; right: 14px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); }
+  /* AI WORKER TILES — content lives inside the dark square */
+  .team-card.ai-card { border-top: none; padding-top: 0; }
+  .ai-tile { position: relative; background: var(--ink); border: 1px solid var(--ink); border-radius: 8px; overflow: hidden; padding: 28px; min-height: 380px; display: flex; flex-direction: column; color: var(--white); }
+  .ai-tile::before { content: ''; position: absolute; inset: 0; background: linear-gradient(155deg, var(--ink) 0%, var(--surface) 100%); z-index: 0; }
+  .ai-tile::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  .ai-tile.ai-lane::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 9px); }
+  .ai-tile.ai-tally::after { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 10px 10px; }
+  .ai-tile.ai-roster::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 22px); }
+  .ai-tile.ai-forecast::after { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px); }
+  .ai-tile.ai-lookout::after { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px); }
+  .ai-tile.ai-mill::after { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 12px); }
+  .ai-tile .ai-tag { position: absolute; top: 16px; left: 16px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 4px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
+  .ai-tile .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
+  .ai-tile .ai-id { position: absolute; top: 16px; right: 16px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); }
+  .ai-tile .ai-content { margin-top: auto; position: relative; z-index: 2; }
+  .ai-tile .ai-name { font-family: var(--font); font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin-bottom: 6px; }
+  .ai-tile .ai-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 18px; }
+  .ai-tile .ai-bio { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.72); font-weight: 400; }
   .team-card .name { font-family: var(--font); font-weight: 500; font-size: 16px; margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
   .team-card.pending-card .name { color: var(--muted); }
   .team-card .title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
@@ -595,7 +599,7 @@
         </div>
 
         <div class="team-card">
-          <div class="portrait"><img class="duotone" src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
+          <div class="portrait"><img src="img/team-seb.jpg" alt="Sebastien Douville" loading="lazy"></div>
           <div class="name">Sebastien Douville</div>
           <div class="title">Head of Business Development</div>
           <p class="bio">20 years in M&amp;A, integration, and corporate development across PE-backed and high-growth companies. Co-CEO at Spearhead. <strong>Detroit + Toronto</strong>.</p>
@@ -633,70 +637,76 @@
 
       <div class="team-grid workforce-grid">
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-lane">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-lane">
             <span class="ai-tag">In production</span>
-            <span class="monogram">L</span>
             <span class="ai-id">01</span>
+            <div class="ai-content">
+              <div class="ai-name">Lane</div>
+              <div class="ai-title">Operations &amp; Supply Chain</div>
+              <p class="ai-bio">Reads manifests, bills of lading, and rate sheets. Routes freight, books carriers, reconciles invoices against proofs of delivery. Cuts the days an exception sits in someone's inbox.</p>
+            </div>
           </div>
-          <div class="name">Lane</div>
-          <div class="title">Operations &amp; Supply Chain</div>
-          <p class="bio">Reads manifests, bills of lading, and rate sheets. Routes freight, books carriers, reconciles invoices against proofs of delivery. Cuts the days an exception sits in someone's inbox.</p>
         </div>
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-tally">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-tally">
             <span class="ai-tag">In production</span>
-            <span class="monogram">T</span>
             <span class="ai-id">02</span>
+            <div class="ai-content">
+              <div class="ai-name">Tally</div>
+              <div class="ai-title">Books &amp; Close</div>
+              <p class="ai-bio">Owns the close. Reconciles the GL, posts entries, tracks AR and AP, builds monthly statements and board packs. Reads invoices, payroll runs, and bank feeds without supervision.</p>
+            </div>
           </div>
-          <div class="name">Tally</div>
-          <div class="title">Books &amp; Close</div>
-          <p class="bio">Owns the close. Reconciles the GL, posts entries, tracks AR and AP, builds monthly statements and board packs. Reads invoices, payroll runs, and bank feeds without supervision.</p>
         </div>
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-roster">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-roster">
             <span class="ai-tag">In production</span>
-            <span class="monogram">R</span>
             <span class="ai-id">03</span>
+            <div class="ai-content">
+              <div class="ai-name">Roster</div>
+              <div class="ai-title">People &amp; Culture</div>
+              <p class="ai-bio">Drafts job specs, screens inbound resumes, runs scheduling, reviews payroll. Surfaces tenure risk and engagement signal across the team. Handles the work HR generalists drown in.</p>
+            </div>
           </div>
-          <div class="name">Roster</div>
-          <div class="title">People &amp; Culture</div>
-          <p class="bio">Drafts job specs, screens inbound resumes, runs scheduling, reviews payroll. Surfaces tenure risk and engagement signal across the team. Handles the work HR generalists drown in.</p>
         </div>
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-forecast">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-forecast">
             <span class="ai-tag">In production</span>
-            <span class="monogram">F</span>
             <span class="ai-id">04</span>
+            <div class="ai-content">
+              <div class="ai-name">Forecast</div>
+              <div class="ai-title">Planning &amp; FP&amp;A</div>
+              <p class="ai-bio">Builds and maintains the operating model. Runs scenarios on pricing, capacity, headcount, and capex. Stress tests the plan against demand and supply shocks before the team has to react.</p>
+            </div>
           </div>
-          <div class="name">Forecast</div>
-          <div class="title">Planning &amp; FP&amp;A</div>
-          <p class="bio">Builds and maintains the operating model. Runs scenarios on pricing, capacity, headcount, and capex. Stress tests the plan against demand and supply shocks before the team has to react.</p>
         </div>
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-lookout">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-lookout">
             <span class="ai-tag">In production</span>
-            <span class="monogram">L</span>
             <span class="ai-id">05</span>
+            <div class="ai-content">
+              <div class="ai-name">Lookout</div>
+              <div class="ai-title">Deal Sourcing &amp; Screening</div>
+              <p class="ai-bio">The one we run for ourselves. Reads CIMs and watches transaction signal across our sectors. Builds buyer and seller profiles, drafts initial screens against the mandate, surfaces deals that match before they hit auction.</p>
+            </div>
           </div>
-          <div class="name">Lookout</div>
-          <div class="title">Deal Sourcing &amp; Screening</div>
-          <p class="bio">The one we run for ourselves. Reads CIMs and watches transaction signal across our sectors. Builds buyer and seller profiles, drafts initial screens against the mandate, surfaces deals that match before they hit auction.</p>
         </div>
 
-        <div class="team-card">
-          <div class="portrait ai-worker ai-mill">
+        <div class="team-card ai-card">
+          <div class="ai-tile ai-mill">
             <span class="ai-tag">In production</span>
-            <span class="monogram">M</span>
             <span class="ai-id">06</span>
+            <div class="ai-content">
+              <div class="ai-name">Mill</div>
+              <div class="ai-title">Production &amp; Dispatch</div>
+              <p class="ai-bio">Runs the daily ops board. Schedules production, dispatches jobs, watches the floor KPIs, escalates exceptions. The second-in-command who never goes home.</p>
+            </div>
           </div>
-          <div class="name">Mill</div>
-          <div class="title">Production &amp; Dispatch</div>
-          <p class="bio">Runs the daily ops board. Schedules production, dispatches jobs, watches the floor KPIs, escalates exceptions. The second-in-command who never goes home.</p>
         </div>
 
       </div>
