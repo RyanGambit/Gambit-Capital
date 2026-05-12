@@ -232,6 +232,7 @@
   .cohort-title .accent { color: var(--secondary); font-weight: 400; }
   .cohort-desc { font-size: 14px; color: var(--secondary); max-width: 380px; text-align: right; line-height: 1.5; font-weight: 400; }
   .team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .team-grid.workforce-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .team-card { border-top: 1px solid var(--border); padding-top: 24px; }
   .portrait { width: 100%; aspect-ratio: 1 / 1.2; background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; position: relative; overflow: hidden; border-radius: 8px; }
   .portrait::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--white) 0%, var(--sand) 100%); }
@@ -246,11 +247,12 @@
   .portrait.ai-worker::before { background: linear-gradient(155deg, var(--ink) 0%, var(--surface) 100%); }
   .portrait.ai-worker .monogram { font-size: 72px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
   .portrait.ai-worker::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-  .portrait.ai-bogan::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 9px); }
-  .portrait.ai-margin::after { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 10px 10px; }
-  .portrait.ai-ledger::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 22px); }
-  .portrait.ai-pulse::after { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px); }
-  .portrait.ai-quartermaster::after { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px); }
+  .portrait.ai-lane::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 9px); }
+  .portrait.ai-tally::after { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 10px 10px; }
+  .portrait.ai-roster::after { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 22px); }
+  .portrait.ai-forecast::after { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px); }
+  .portrait.ai-bogan::after { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px); }
+  .portrait.ai-mill::after { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 12px); }
   .ai-tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--working); background: rgba(0,0,0,0.6); border: 1px solid rgba(22,163,74,0.4); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
   .ai-tag::before { content: ''; width: 4px; height: 4px; background: var(--working); border-radius: 50%; }
   .ai-id { position: absolute; bottom: 12px; right: 14px; z-index: 3; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); }
@@ -561,7 +563,7 @@
   <div class="container">
     <div class="section-head">
       <div class="label"><span class="num">04</span> · Team</div>
-      <h2>Five partners. Five AI workers.<br><span class="accent">One team.</span></h2>
+      <h2>Five partners. Six AI workers.<br><span class="accent">One team.</span></h2>
     </div>
 
     <!-- Cohort 1: Partners -->
@@ -626,64 +628,75 @@
           <div class="cohort-label"><span class="num">Cohort 02</span></div>
           <div class="cohort-title">AI workers. <span class="accent">On staff.</span></div>
         </div>
-        <div class="cohort-desc">Five AI workers built on Ancrage OS. Sourcing, diligence, modeling, monitoring, reporting. On staff, full time.</div>
+        <div class="cohort-desc">Six AI workers built on Ancrage OS. Installed inside every company we back. Logistics, books, people, planning, demand, operations. On staff, full time.</div>
       </div>
 
-      <div class="team-grid">
+      <div class="team-grid workforce-grid">
+
+        <div class="team-card">
+          <div class="portrait ai-worker ai-lane">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">L</span>
+            <span class="ai-id">01</span>
+          </div>
+          <div class="name">Lane</div>
+          <div class="title">Operations &amp; Supply Chain</div>
+          <p class="bio">Reads manifests, bills of lading, and rate sheets. Routes freight, books carriers, reconciles invoices against proofs of delivery. Cuts the days an exception sits in someone's inbox.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker ai-tally">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">T</span>
+            <span class="ai-id">02</span>
+          </div>
+          <div class="name">Tally</div>
+          <div class="title">Books &amp; Close</div>
+          <p class="bio">Owns the close. Reconciles the GL, posts entries, tracks AR and AP, builds monthly statements and board packs. Reads invoices, payroll runs, and bank feeds without supervision.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker ai-roster">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">R</span>
+            <span class="ai-id">03</span>
+          </div>
+          <div class="name">Roster</div>
+          <div class="title">People &amp; Culture</div>
+          <p class="bio">Drafts job specs, screens inbound resumes, runs scheduling, reviews payroll. Surfaces tenure risk and engagement signal across the team. Handles the work HR generalists drown in.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker ai-forecast">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">F</span>
+            <span class="ai-id">04</span>
+          </div>
+          <div class="name">Forecast</div>
+          <div class="title">Planning &amp; FP&amp;A</div>
+          <p class="bio">Builds and maintains the operating model. Runs scenarios on pricing, capacity, headcount, and capex. Stress tests the plan against demand and supply shocks before the team has to react.</p>
+        </div>
 
         <div class="team-card">
           <div class="portrait ai-worker ai-bogan">
             <span class="ai-tag">In production</span>
             <span class="monogram">B</span>
-            <span class="ai-id">01</span>
-          </div>
-          <div class="name">Bogan</div>
-          <div class="title">Origination &amp; Screening</div>
-          <p class="bio">Reads CIMs, runs deal screens, builds buyer and seller profiles, drafts initial memos, surfaces deals matching the mandate. Already in production at Spearhead.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="portrait ai-worker ai-margin">
-            <span class="ai-tag">In production</span>
-            <span class="monogram">M</span>
-            <span class="ai-id">02</span>
-          </div>
-          <div class="name">Margin</div>
-          <div class="title">Diligence Coordinator</div>
-          <p class="bio">Coordinates diligence across financial, commercial, legal, and operational. Ingests data rooms, flags anomalies, drafts findings, keeps the IC in sync with the deal team.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="portrait ai-worker ai-ledger">
-            <span class="ai-tag">In production</span>
-            <span class="monogram">L</span>
-            <span class="ai-id">03</span>
-          </div>
-          <div class="name">Ledger</div>
-          <div class="title">IC Memo &amp; Thesis</div>
-          <p class="bio">Writes IC memos in the firm's voice. Drafts investment theses, value creation plans, and post-mortems. Produces every working document at the standard a partner would sign.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="portrait ai-worker ai-pulse">
-            <span class="ai-tag">In production</span>
-            <span class="monogram">P</span>
-            <span class="ai-id">04</span>
-          </div>
-          <div class="name">Pulse</div>
-          <div class="title">Portfolio &amp; KPI Monitoring</div>
-          <p class="bio">Watches portfolio company KPIs daily. Flags trend breaks, covenant risk, customer concentration drift, and pricing changes before they hit a quarterly board pack.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="portrait ai-worker ai-quartermaster">
-            <span class="ai-tag">In production</span>
-            <span class="monogram">Q</span>
             <span class="ai-id">05</span>
           </div>
-          <div class="name">Quartermaster</div>
-          <div class="title">LP Reporting &amp; Capital Stack</div>
-          <p class="bio">Maintains the cap table, tracks distributions, drafts LP letters, runs fund-level performance reporting. The work that grows linearly with AUM and steals partner time.</p>
+          <div class="name">Bogan</div>
+          <div class="title">Brand &amp; Demand</div>
+          <p class="bio">Writes campaigns in the company's brand voice. Builds landing pages, drafts email sequences, segments lists, runs copy A/B tests. Keeps the demand funnel moving without a twelve-person agency.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="portrait ai-worker ai-mill">
+            <span class="ai-tag">In production</span>
+            <span class="monogram">M</span>
+            <span class="ai-id">06</span>
+          </div>
+          <div class="name">Mill</div>
+          <div class="title">Production &amp; Dispatch</div>
+          <p class="bio">Runs the daily ops board. Schedules production, dispatches jobs, watches the floor KPIs, escalates exceptions. The second-in-command who never goes home.</p>
         </div>
 
       </div>
