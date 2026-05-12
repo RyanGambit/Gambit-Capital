@@ -121,15 +121,12 @@
 
   /* THESIS */
   #thesis { padding: 140px 0; background: var(--page); border-top: 1px solid var(--border); }
-  .thesis-beats { display: flex; flex-direction: column; }
-  .beat { display: grid; grid-template-columns: 140px 1fr; gap: 56px; padding: 40px 0; border-bottom: 1px solid var(--border); align-items: start; }
-  .beat:first-child { border-top: 1px solid var(--ink); }
-  .beat:last-child { border-bottom: 1px solid var(--ink); }
-  .beat-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
-  .beat-body { max-width: 760px; }
-  .beat-body h3 { font-family: var(--font); font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--ink); }
-  .beat-body p { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.65; color: var(--secondary); font-weight: 400; }
-  .beat-body p strong { color: var(--ink); font-weight: 500; }
+  .thesis-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .thesis-card { border-top: 1px solid var(--ink); padding-top: 28px; display: flex; flex-direction: column; }
+  .thesis-card .num { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+  .thesis-card h3 { font-family: var(--font); font-weight: 500; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 20px; color: var(--ink); }
+  .thesis-card p { font-size: 15px; line-height: 1.65; color: var(--secondary); font-weight: 400; }
+  .thesis-card p strong { color: var(--ink); font-weight: 500; }
 
   /* MANDATE */
   #mandate { padding: 140px 0; background: var(--sand); border-top: 1px solid var(--border); }
@@ -302,6 +299,7 @@
   .contact-head .label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 32px; display: block; }
   .contact-head .label .num { color: var(--white); font-weight: 600; }
   .contact-head h2 { font-family: var(--font); font-weight: 500; font-size: clamp(48px, 7vw, 96px); line-height: 0.98; letter-spacing: -0.035em; color: var(--white); }
+  .contact-body { max-width: 640px; font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.72); font-weight: 400; margin-bottom: 48px; }
   .contact-email { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font); font-size: clamp(24px, 3vw, 36px); color: var(--white); text-decoration: none; padding: 16px 28px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; font-weight: 500; transition: background 0.2s ease, border-color 0.2s ease; margin-bottom: 100px; letter-spacing: -0.015em; }
   .contact-email:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
   .contact-email .arrow { font-family: var(--mono); font-size: 18px; transition: transform 0.2s ease; }
@@ -337,6 +335,7 @@
     .insights-magazine { grid-template-columns: 1fr; gap: 32px; }
     .cohort-desc { text-align: left; }
     .mandate-single { padding: 40px 36px 32px; }
+    .thesis-cards { grid-template-columns: 1fr; gap: 24px; }
     .how-flow { row-gap: 64px; padding: 0 28px; }
     .how-station, .how-station.station-1, .how-station.station-2, .how-station.station-3 { grid-column: 1 / -1; grid-template-columns: minmax(0, 240px) 1fr; gap: 32px; }
     .how-flow::before { left: 30px; }
@@ -446,21 +445,21 @@
       <h2>The next decade of outsized returns belongs to operators who put <span class="accent">AI inside the physical world.</span></h2>
     </div>
 
-    <div class="thesis-beats">
-      <div class="beat">
-        <div class="beat-label">01</div>
-        <div class="beat-body">
-          <h3>AI doesn't just accelerate. It unlocks.</h3>
-          <p>Inside the right operator, AI workers do two things that compound. They accelerate the parts of the value chain that already work: pricing, ops, customer flow. They unlock parts that didn't exist: new products, new margins, new defensibility. <strong>The first is helpful. The second is what creates outsized returns.</strong></p>
-        </div>
+    <div class="thesis-cards">
+      <div class="thesis-card">
+        <span class="num">01 / Artificial Intelligence</span>
+        <h3>Models that compound.</h3>
+        <p>Inside the right operator, AI workers accelerate what already works and unlock what didn't. <strong>The first is helpful. The second is what creates outsized returns.</strong></p>
       </div>
-
-      <div class="beat">
-        <div class="beat-label">02</div>
-        <div class="beat-body">
-          <h3>We back companies that are hard to disrupt.</h3>
-          <p>Logistics, healthcare, manufacturing, field services. Workflows the physical world or regulation makes hard to copy, hard to undercut, expensive to ignore. <strong>AI inside these workflows compounds. AI in front of a SaaS dashboard does not.</strong></p>
-        </div>
+      <div class="thesis-card">
+        <span class="num">02 / Physical Industry</span>
+        <h3>Atoms that still matter.</h3>
+        <p>Logistics, manufacturing, field services. Workflows where the physical layer makes the moat: hard to replicate, hard to undercut, expensive to ignore. <strong>AI inside these workflows compounds. AI in front of a SaaS dashboard does not.</strong></p>
+      </div>
+      <div class="thesis-card">
+        <span class="num">03 / Regulated Markets</span>
+        <h3>Rules that create scarcity.</h3>
+        <p>Healthcare. Licenses, accreditations, audited track records. The right to operate takes years to build and a single breach to lose. <strong>We back operators who treat regulation as a moat.</strong></p>
       </div>
     </div>
   </div>
@@ -475,7 +474,7 @@
     </div>
 
     <div class="mandate-single">
-      <p class="mandate-lede">Operators in industries that are hard to disrupt.</p>
+      <p class="mandate-lede">Operators in industries that are hard to disrupt. Control buyouts when the situation calls for it. Growth equity, JVs, and structured deals when those are the right shape. <strong>The hold is long, the playbook is operational, and the leverage is the forward-deployed model we install alongside the team.</strong></p>
 
       <div class="mandate-specs">
         <div class="spec-row">
@@ -572,7 +571,7 @@
           <div class="cohort-label"><span class="num">Cohort 01</span></div>
           <div class="cohort-title">The <span class="accent">partners</span>.</div>
         </div>
-        <div class="cohort-desc">Each of us has run, built, scaled, or unwound a real company. We have closed deals, signed paychecks, and stayed past the parts of the work that hurt. That is the bar for sitting at this table.</div>
+        <div class="cohort-desc">Each of us has run, built, scaled, or unwound a real company. We have closed deals, signed paychecks, fired people we cared about, and stayed past the parts of the work that hurt. That is the bar for sitting around this table.</div>
       </div>
 
       <div class="team-grid">
@@ -625,7 +624,7 @@
       <div class="cohort-head">
         <div>
           <div class="cohort-label"><span class="num">Cohort 02</span></div>
-          <div class="cohort-title">The <span class="accent">desk</span>.</div>
+          <div class="cohort-title">AI workers. <span class="accent">On staff.</span></div>
         </div>
         <div class="cohort-desc">Five AI workers built on Ancrage OS. Sourcing, diligence, modeling, monitoring, reporting. On staff, full time.</div>
       </div>
@@ -755,6 +754,8 @@
       <span class="label"><span class="num">06</span> · Contact</span>
       <h2>We'd like to hear from you.</h2>
     </div>
+
+    <p class="contact-body">Gambit looks at deals with up to $100M of enterprise value across logistics, healthcare, manufacturing, and field services. We are most useful when an owner is thinking about the long term.</p>
 
     <a href="mailto:partners@gambitco.io" class="contact-email">partners@gambitco.io <span class="arrow">→</span></a>
 
